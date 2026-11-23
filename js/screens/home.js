@@ -52,6 +52,28 @@ function researchNotes() {
   }).join("");
 }
 
+// Shown only in iPhone/iPad Safari when the app isn't on the Home Screen yet.
+// (navigator.standalone exists only on Apple devices: false = in Safari, true = installed.)
+const canInstall = () => navigator.standalone === false && !store.state.settings.installHintDismissed;
+
+function installCard() {
+  if (!canInstall()) return "";
+  return `<section class="card install" aria-label="Install the app">
+    <button class="install__close" data-install-close aria-label="Dismiss">×</button>
+    <div class="install__row">
+      <img class="install__icon" src="assets/icons/apple-touch-icon.png" alt="">
+      <div>
+        <h3>Add Winterveil to your Home Screen</h3>
+        <p>It opens full-screen like a real app and works offline.</p>
+      </div>
+    </div>
+    <ol class="install__steps">
+      <li><span class="install__n">1</span><span>Tap <b>Share</b> <i class="install__share" aria-label="Share icon">${ICONS.share}</i> in Safari's toolbar <small>(on newer iPhones it's inside the <b>•••</b> menu)</small></span></li>
+      <li><span class="install__n">2</span><span>Choose <b>Add to Home Screen</b>, then tap <b>Add</b></span></li>
+    </ol>
+  </section>`;
+}
+
 export function renderHome(root) {
   const total = db.pokemon.length;
   const found = store.unlockedCount();
@@ -60,7 +82,7 @@ export function renderHome(root) {
   const earned = earnedCount();
   const first = found === 0;
 
-  root.innerHTML = `
+  root.innerHTML = `${installCard()}
     <section class="card card--navy hero">
       <div class="hero__top">
         <div>
@@ -126,6 +148,11 @@ export function renderHome(root) {
       <div class="section__head"><h2 class="section__title">Region Research Notes</h2></div>
       <div class="notes">${researchNotes()}</div>
     </section>`;
+
+  root.querySelector("[data-install-close]")?.addEventListener("click", (e) => {
+    store.dismissInstallHint();
+    e.currentTarget.closest(".install").remove();
+  });
 
   // Animate the progress bar in.
   requestAnimationFrame(() => requestAnimationFrame(() => {

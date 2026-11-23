@@ -118,6 +118,11 @@ export const store = {
     commit();
   },
 
+  dismissInstallHint() {
+    state.settings.installHintDismissed = true;
+    commit();
+  },
+
   soundOn: () => state.settings.sound,
   setSound(on) {
     state.settings.sound = on;

@@ -43,6 +43,27 @@
 .hero__stats span { font-weight: 700; color: rgba(244, 248, 255, 0.6); margin-left: 2px; }
 .hero__stats small { display: block; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.04em; color: rgba(244, 248, 255, 0.6); text-transform: uppercase; }
 
+/* Add-to-Home-Screen guide (iPhone Safari only) */
+.install { margin-bottom: 14px; padding: 16px 16px 14px; background: linear-gradient(150deg, rgba(255,255,255,0.92), rgba(247, 234, 203, 0.7)); }
+.install__close {
+  position: absolute; top: 8px; right: 8px;
+  width: 32px; height: 32px;
+  border: 0; border-radius: 50%;
+  background: rgba(19, 32, 63, 0.06);
+  font-size: 1.25rem; line-height: 1; color: var(--ink-2);
+}
+.install__row { display: flex; gap: 12px; align-items: center; padding-right: 28px; }
+.install__icon { flex: none; width: 52px; height: 52px; border-radius: 12px; box-shadow: var(--shadow-sm); }
+.install h3 { font-size: var(--fs-md); font-weight: 900; line-height: 1.25; }
+.install p { font-size: var(--fs-sm); font-weight: 600; color: var(--ink-2); }
+.install__steps { list-style: none; margin: 12px 0 0; padding: 12px 0 0; border-top: 1px solid var(--hairline); display: grid; gap: 8px; }
+.install__steps li { display: flex; gap: 10px; align-items: flex-start; font-size: var(--fs-sm); font-weight: 600; color: var(--ink-2); }
+.install__steps b { color: var(--ink); font-weight: 900; }
+.install__steps small { display: block; font-size: var(--fs-xs); color: var(--ink-3); }
+.install__n { flex: none; width: 22px; height: 22px; display: grid; place-items: center; border-radius: 50%; background: var(--navy-800); color: var(--gold-300); font-size: var(--fs-xs); font-weight: 900; }
+.install__share { display: inline-grid; vertical-align: -3px; color: var(--ice-500); }
+.install__share svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
 /* Recently discovered */
 .recent { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
 .mini-card {
