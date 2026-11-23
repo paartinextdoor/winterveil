@@ -71,7 +71,7 @@ export function renderAchievements(root) {
     <section class="section">
       <div class="section__head"><h2 class="section__title">Settings</h2></div>
       <label class="card setting">
-        <span><b>Sound effects</b><small>Chimes for gifts, badges and more</small></span>
+        <span><b>Sound effects</b><small>Song hooks and jingles for new Pokémon, chimes for badges</small></span>
         <input type="checkbox" class="switch" data-sound ${store.soundOn() ? "checked" : ""}>
       </label>
     </section>

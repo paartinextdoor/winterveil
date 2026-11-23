@@ -1,5 +1,5 @@
 // ===========================================================
-// Sound effects (off by default; the toggle is on the Achievements tab).
+// Sound effects (on by default; the toggle is on the Achievements tab).
 // Every sound is synthesised with the Web Audio API, so there are no audio files.
 // On iPhone, sounds follow the ring/silent switch.
 // ===========================================================
@@ -44,7 +44,45 @@ function tone(midi, at, { dur = 0.5, type = "triangle", vol = 0.6, glide = 0 } =
   osc.stop(t + dur + 0.05);
 }
 
+let noiseBuffer = null;
+/** A quick metallic "shake" of sleigh bells (filtered noise burst). */
+function sleighBells(at, vol = 0.22) {
+  const c = ctx, t = c.currentTime + at;
+  if (!noiseBuffer) {
+    noiseBuffer = c.createBuffer(1, c.sampleRate * 0.3, c.sampleRate);
+    const d = noiseBuffer.getChannelData(0);
+    for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
+  }
+  const src = c.createBufferSource();
+  src.buffer = noiseBuffer;
+  const hp = c.createBiquadFilter();
+  hp.type = "highpass";
+  hp.frequency.value = 6500;
+  const gain = c.createGain();
+  gain.gain.setValueAtTime(0.0001, t);
+  gain.gain.exponentialRampToValueAtTime(vol, t + 0.01);
+  gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.22);
+  src.connect(hp).connect(gain).connect(master);
+  src.start(t);
+  src.stop(t + 0.3);
+}
+
+/** A bell: a sine tone plus a quiet higher partial for shimmer. */
+function bell(midi, at, dur = 0.6, vol = 0.5) {
+  tone(midi, at, { dur, type: "sine", vol });
+  tone(midi + 19, at, { dur: dur * 0.5, type: "sine", vol: vol * 0.18 });
+}
+
 const SOUNDS = {
+  // Sleigh bells + the opening of "Jingle Bells" (public domain) for a new Pokémon.
+  jingle() {
+    const b = 0.16; // one beat
+    const tune = [[76, 0, 1], [76, 1, 1], [76, 2, 2], [76, 4, 1], [76, 5, 1], [76, 6, 2],
+                  [76, 8, 1], [79, 9, 1], [72, 10, 1.5], [74, 11.5, 0.5], [76, 12, 4]];
+    tune.forEach(([n, beat, len]) => bell(n, beat * b, Math.max(0.35, len * b * 1.6), 0.45));
+    [[60, 0], [67, 4], [65, 8], [60, 12]].forEach(([n, beat]) => tone(n, beat * b, { dur: 0.6, type: "triangle", vol: 0.14 }));
+    for (let beat = 0; beat <= 14; beat += 1) sleighBells(beat * b, beat % 2 ? 0.1 : 0.2);
+  },
   // Little "tick" while the present shakes.
   shake() { [0, 0.18, 0.36, 0.54, 0.7].forEach((t, i) => tone(60 + i, t, { dur: 0.09, type: "square", vol: 0.12 })); },
   // Sparkling arpeggio when a Pokémon appears.

@@ -5,6 +5,7 @@ import { esc, typeChips, ICONS } from "../ui.js";
 import { back, navigate } from "../router.js";
 import { syncAchievements, announce } from "../achievements.js";
 import { CONFIG } from "../config.js";
+import { mediaCardHTML } from "../media.js";
 
 const STAT_LABELS = { hp: "HP", attack: "Attack", defense: "Defense", spAtk: "Sp. Atk", spDef: "Sp. Def", speed: "Speed" };
 
@@ -70,6 +71,7 @@ function unlockedBody(p) {
 
   return `${letter}
     <div class="card"><h3 class="card__title">Pokédex Entry</h3><p class="detail__entry">${esc(p.entry)}</p></div>
+    ${mediaCardHTML(p)}
     <div class="card">
       <h3 class="card__title">Profile</h3>
       <div class="info-grid">

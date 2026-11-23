@@ -14,14 +14,14 @@ const fresh = () => ({
   favorites: { national: [] },
   seenEnding: false,
   ending: null,        // { title, message[], signature } once unlocked with the Christmas code
-  settings: { sound: false },
+  settings: { sound: true },
 });
 
 function migrate(save) {
   // Future versions: upgrade older saves here, e.g. if (save.version === 1) {...}
   const merged = { ...fresh(), ...save, version: VERSION };
   merged.favorites = { national: [], ...save.favorites };
-  merged.settings = { sound: false, ...save.settings };
+  merged.settings = { sound: true, ...save.settings };
   return merged;
 }
 

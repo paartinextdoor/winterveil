@@ -8,6 +8,7 @@ import { endingPending } from "./ending.js";
 import { unlock as unlockSecret } from "../secret.js";
 import { CONFIG } from "../config.js";
 import { play } from "../sound.js";
+import { primeAudio } from "../hooks.js";
 
 const fmtDate = (iso) => new Date(iso).toLocaleDateString(undefined, { month: "short", day: "numeric" });
 
@@ -75,6 +76,7 @@ export function renderGift(root) {
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
+    primeAudio(); // must happen during the tap so iPhone allows the song hook later
     button.disabled = true;
     button.textContent = "Checking…";
     let result;

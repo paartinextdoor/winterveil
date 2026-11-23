@@ -19,7 +19,7 @@ const CORE = [
   "./js/ui.js", "./js/snow.js", "./js/sound.js", "./js/achievements.js", "./js/codes.js", "./js/secret.js", "./js/pokeapi.js",
   "./js/screens/home.js", "./js/screens/dex.js", "./js/screens/detail.js", "./js/screens/gift.js",
   "./js/screens/achievements.js", "./js/screens/national.js", "./js/screens/ending.js",
-  "./js/screens/map.js", "./js/tt-map.js", "./css/map.css", "./data/places.json",
+  "./js/screens/map.js", "./js/tt-map.js", "./css/map.css", "./data/places.json", "./data/media.json", "./css/media.css", "./js/media.js", "./js/hooks.js",
   "./data/pokemon.json", "./data/types.json", "./data/codes.json", "./data/achievements.json", "./data/research-notes.json",
   "./assets/icons/icon.svg", "./assets/icons/apple-touch-icon.png",
 ];

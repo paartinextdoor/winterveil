@@ -4,6 +4,7 @@
 import { typeInfo, dexNo } from "./data.js";
 import { artHTML } from "./art.js";
 import { play } from "./sound.js";
+import { hasHook, playHook, stopHook } from "./hooks.js";
 
 export const esc = (s = "") =>
   String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -148,13 +149,16 @@ export function playUnlock(pokemonList, giftTitle = "Mystery Gift") {
             : `<button class="btn btn--gold btn--lg btn--block" data-act="next">Next</button>`}
         </div>`;
       sparkles(el.querySelector(".unlock__stage"));
-      play("reveal");
+      // Song Pokémon play their hook; everyone else gets a sleigh-bell jingle.
+      if (hasHook(p.id)) playHook(p.id).then((ok) => { if (!ok) play("jingle"); });
+      else play("jingle");
       content.querySelector(".btn").focus({ preventScroll: true });
     };
 
     el.addEventListener("click", (e) => {
       const act = e.target.closest("[data-act]")?.dataset.act;
       if (!act) return;
+      stopHook();
       if (act === "next") { index++; el.classList.remove("is-flash"); void el.offsetWidth; el.classList.add("is-flash"); show(); }
       if (act === "view") close(pokemonList.length > 1 ? "dex:" : "dex:" + pokemonList[0].id);
       if (act === "close") close("close");

@@ -1,0 +1,39 @@
+/* ==========================================================
+   Media cards (Spotify players, Movie Night)
+   ========================================================== */
+.media { display: grid; gap: 12px; }
+.media__head { display: flex; align-items: center; gap: 12px; }
+.media__head > div { flex: 1; display: grid; min-width: 0; }
+.media__head small { font-size: var(--fs-xs); font-weight: 900; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); }
+.media__head b { font-size: var(--fs-lg); font-weight: 900; }
+.media__icon {
+  flex: none; width: 44px; height: 44px; display: grid; place-items: center; border-radius: 14px;
+  background: linear-gradient(160deg, var(--navy-600), var(--navy-900));
+}
+.media__icon svg { width: 22px; height: 22px; fill: none; stroke: var(--gold-300); stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+.media__artist { font-size: var(--fs-sm); font-weight: 700; color: var(--ink-2); }
+.media__note { font-size: var(--fs-sm); font-weight: 600; color: var(--ink-2); line-height: 1.5; }
+
+.media__player { width: 100%; height: 152px; border: 0; border-radius: 12px; background: var(--ice-100); }
+.media__player--tall { height: 352px; }
+.media__open svg { width: 18px; height: 18px; fill: currentColor; }
+
+.media__badge {
+  flex: none; padding: 4px 10px; border-radius: var(--r-pill);
+  font-size: 0.6875rem; font-weight: 900; letter-spacing: 0.04em;
+  background: var(--forest-100); color: var(--forest-500);
+}
+.media__badge.is-next { background: var(--gold-200); color: var(--gold-700); }
+
+.media__seen { flex-basis: 100%; font-size: var(--fs-xs); font-weight: 800; letter-spacing: 0.04em; color: rgba(244, 248, 255, 0.65); }
+.media__film {
+  display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 10px;
+  padding: 16px; border-radius: var(--r-md);
+  color: var(--ink-inverse);
+  background:
+    radial-gradient(90% 120% at 100% 0%, rgba(232, 199, 122, 0.25), transparent 60%),
+    linear-gradient(150deg, var(--navy-700), var(--navy-950));
+}
+.media__film b { font-size: var(--fs-xl); font-weight: 900; letter-spacing: -0.01em; line-height: 1.2; }
+.media__film span { flex: none; font-weight: 800; color: var(--gold-300); }
+.media__trailer svg { width: 18px; height: 18px; fill: currentColor; }
