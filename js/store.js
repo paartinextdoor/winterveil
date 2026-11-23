@@ -15,6 +15,7 @@ const fresh = () => ({
   seenEnding: false,
   ending: null,        // { title, message[], signature } once unlocked with the Christmas code
   settings: { sound: true },
+  facts: { cursor: 0, at: 0 }, // which fun fact Home shows; moves on each app visit
 });
 
 function migrate(save) {
@@ -22,6 +23,7 @@ function migrate(save) {
   const merged = { ...fresh(), ...save, version: VERSION };
   merged.favorites = { national: [], ...save.favorites };
   merged.settings = { sound: true, ...save.settings };
+  merged.facts = { cursor: 0, at: 0, ...save.facts };
   return merged;
 }
 
@@ -92,6 +94,23 @@ export const store = {
     state.achievements[id] = new Date().toISOString();
     commit();
     return true;
+  },
+
+  // Home "Did you know?" rotation: a new set of facts each visit
+  // (a visit = opening the app after at least 20 minutes away).
+  factCursor: () => state.facts.cursor,
+  /** Call when the app opens or comes back: returns true if this counts as a new visit. */
+  nextVisit() {
+    const isNew = Date.now() - state.facts.at >= 20 * 60 * 1000;
+    if (isNew) state.facts.cursor += 1;
+    state.facts.at = Date.now();
+    commit();
+    return isNew;
+  },
+  /** Call when the app goes to the background ("last seen"). */
+  markSeen() {
+    state.facts.at = Date.now();
+    commit();
   },
 
   // National Dex favorites (PokéAPI ids)

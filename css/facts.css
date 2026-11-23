@@ -1,0 +1,48 @@
+/* ==========================================================
+   Home: "Did you know?" fun facts (swipeable cards)
+   ========================================================== */
+.facts__hint { font-size: var(--fs-xs); font-weight: 800; color: var(--ink-3); }
+
+.facts {
+  display: flex; gap: 12px;
+  margin: 0 calc(-1 * var(--gutter));
+  padding: 2px var(--gutter) 12px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 0 var(--gutter);
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.facts::-webkit-scrollbar { display: none; }
+
+.fact {
+  flex: 0 0 84%;
+  scroll-snap-align: start;
+  display: grid; align-content: start; gap: 10px;
+  min-height: 150px;
+  transition: transform var(--t-fast) var(--ease-out);
+}
+.facts--single .fact { flex-basis: 100%; }
+.fact:active { transform: scale(0.98); }
+
+.fact__top { display: flex; align-items: center; gap: 10px; }
+.fact__top > div { flex: 1; display: grid; min-width: 0; }
+.fact__top small { font-size: var(--fs-xs); font-weight: 800; letter-spacing: 0.04em; color: var(--ink-3); }
+.fact__top b { font-size: var(--fs-md); font-weight: 900; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.fact__art {
+  flex: none; width: 48px; height: 48px; object-fit: contain;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 45%, var(--ice-100), transparent 72%);
+}
+.fact__label {
+  justify-self: start; margin-bottom: -4px; padding: 3px 9px; border-radius: var(--r-pill);
+  font-size: 0.6875rem; font-weight: 900; letter-spacing: 0.04em;
+  background: var(--gold-200); color: var(--gold-700);
+}
+.fact__text { font-size: var(--fs-sm); font-weight: 600; line-height: 1.55; color: var(--ink-2); }
+
+.fact--loading {
+  background: linear-gradient(100deg, rgba(255,255,255,0.5) 30%, rgba(255,255,255,0.9) 50%, rgba(255,255,255,0.5) 70%) 0 0 / 200% 100%;
+  animation: fact-shimmer 1.2s linear infinite;
+}
+@keyframes fact-shimmer { to { background-position: -200% 0; } }

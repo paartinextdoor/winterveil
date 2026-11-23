@@ -5,6 +5,8 @@ import { artHTML, tintFor } from "../art.js";
 import { esc, ICONS } from "../ui.js";
 import { earnedCount } from "../achievements.js";
 import { miniMapHTML, exploredCount } from "./map.js";
+import { funFacts } from "../funfacts.js";
+import { artUrl } from "../pokeapi.js";
 
 function greeting() {
   const h = new Date().getHours();
@@ -75,6 +77,37 @@ function installCard() {
   </section>`;
 }
 
+// ---------- "Did you know?" fun facts about his National Dex favourites ----------
+const factsHead = `<div class="section__head"><h2 class="section__title">Did you know?</h2>
+  <span class="facts__hint">New facts every visit</span></div>`;
+
+async function fillFacts(root) {
+  const host = root.querySelector("[data-facts]");
+  const favs = store.state.favorites.national.slice(-6).reverse(); // his 6 most recent favourites
+  if (!host || !favs.length) return;
+
+  host.hidden = false;
+  host.innerHTML = `${factsHead}<div class="facts">${favs.map(() => `<div class="card fact fact--loading"></div>`).join("")}</div>`;
+
+  const results = await Promise.allSettled(favs.map(funFacts));
+  if (!host.isConnected) return;
+  const ready = results.filter((r) => r.status === "fulfilled" && r.value.facts.length).map((r) => r.value);
+  if (!ready.length) { host.hidden = true; return; } // offline on first visit: just hide
+
+  const cursor = store.factCursor();
+  host.innerHTML = `${factsHead}<div class="facts${ready.length === 1 ? " facts--single" : ""}">${ready.map((d, i) => {
+    const f = d.facts[(cursor + i * 3) % d.facts.length];
+    return `<a class="card fact" href="#/dex/national/${d.id}">
+      <div class="fact__top">
+        <img class="fact__art" src="${artUrl(d.id)}" alt="" loading="lazy" decoding="async">
+        <div><small>No. ${dexNo(d.id)}</small><b>${esc(d.name)}</b></div>
+      </div>
+      <span class="fact__label">${esc(f.label)}</span>
+      <p class="fact__text">${esc(f.text)}</p>
+    </a>`;
+  }).join("")}</div>`;
+}
+
 export function renderHome(root) {
   const total = db.pokemon.length;
   const found = store.unlockedCount();
@@ -116,6 +149,8 @@ export function renderHome(root) {
       </div>
       <div class="recent">${recentCards()}</div>
     </section>
+
+    <section class="section" data-facts hidden></section>
 
     <section class="section">
       <a class="card map-cta" href="#/map">
@@ -166,6 +201,8 @@ export function renderHome(root) {
     store.dismissInstallHint();
     e.currentTarget.closest(".install").remove();
   });
+
+  fillFacts(root);
 
   // Animate the progress bar in.
   requestAnimationFrame(() => requestAnimationFrame(() => {

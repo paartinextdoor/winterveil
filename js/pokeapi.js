@@ -4,12 +4,12 @@
 // session, and the browser's HTTP cache handles repeat visits.
 // ===========================================================
 
-const API = "https://pokeapi.co/api/v2";
+export const API = "https://pokeapi.co/api/v2";
 const ART = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork";
 
 const cache = new Map(); // url → Promise<json>
 
-function getJSON(url) {
+export function getJSON(url) {
   if (!cache.has(url)) {
     const p = fetch(url).then((res) => {
       if (!res.ok) throw new Error(`PokéAPI ${res.status}`);
@@ -22,7 +22,7 @@ function getJSON(url) {
 }
 
 /** "https://…/pokemon-species/25/" → 25 */
-const idFromUrl = (url) => Number(url.match(/\/(\d+)\/?$/)[1]);
+export const idFromUrl = (url) => Number(url.match(/\/(\d+)\/?$/)[1]);
 
 export const artUrl = (id) => `${ART}/${id}.png`;
 
@@ -76,7 +76,7 @@ const STAT_KEYS = {
   "special-attack": "spAtk", "special-defense": "spDef", "speed": "speed",
 };
 
-const english = (list, field) => list.find((e) => e.language.name === "en")?.[field];
+export const english = (list, field) => list.find((e) => e.language.name === "en")?.[field];
 
 function flattenChain(node, depth = 0, stages = []) {
   (stages[depth] ||= []).push({ id: idFromUrl(node.species.url), name: prettyName(node.species.name) });

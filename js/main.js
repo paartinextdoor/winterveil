@@ -3,7 +3,7 @@
 // ===========================================================
 import { loadData } from "./data.js";
 import { store } from "./store.js";
-import { route, startRouter } from "./router.js";
+import { route, startRouter, rerender } from "./router.js";
 import { startSnow } from "./snow.js";
 import { renderHome } from "./screens/home.js";
 import { renderDex } from "./screens/dex.js";
@@ -47,6 +47,12 @@ async function boot() {
   }
   updateGiftDot();
   store.subscribe(updateGiftDot);
+  // New fun facts on Home each time he comes back to the app.
+  store.nextVisit();
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) return store.markSeen();
+    if (store.nextVisit() && location.hash.startsWith("#/home")) rerender();
+  });
   startRouter(view);
 }
 
