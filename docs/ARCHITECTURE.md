@@ -161,4 +161,4 @@ All reads and writes go through `store.js`. If a future version changes the shap
 | **1 · Core** | App shell, bottom nav, Home, Winterveil Dex, Detail, Mystery Gift with unlock animation, data JSON, placeholder art, responsive CSS, achievements engine (preview on Home) | ✅ |
 | **2 · Collection** | Full Achievements screen and unlock toasts. National Dex (PokéAPI search, filters, detail, favorites). Harmona ending screen with personal message. | ✅ built |
 | **3 · Polish & Ship** | Final artwork swap-in. Sound effects (opt-in). iOS home-screen icons and splash. Offline caching (service worker). GitHub Pages deploy checklist. Test pass on a real iPhone. | ✅ built (placeholder art kept as final; real-iPhone test: owner) |
-| **4 · Gift Ops** | Print-ready advent code cards. Date schedule for each code. Reset/test tools hidden behind `?dev`. | |
+| **4 · Gift Ops** | Print-ready advent code cards. Date schedule for each code. Reset/test tools hidden behind `?dev`. | ✅ (cards and schedule kept privately, outside the repo) |
