@@ -4,6 +4,7 @@ import { CONFIG } from "../config.js";
 import { artHTML, tintFor } from "../art.js";
 import { esc, ICONS } from "../ui.js";
 import { earnedCount } from "../achievements.js";
+import { miniMapHTML, exploredCount } from "./map.js";
 
 function greeting() {
   const h = new Date().getHours();
@@ -114,6 +115,18 @@ export function renderHome(root) {
         <a class="section__link" href="#/dex">See Pokédex</a>
       </div>
       <div class="recent">${recentCards()}</div>
+    </section>
+
+    <section class="section">
+      <a class="card map-cta" href="#/map">
+        ${miniMapHTML()}
+        <div class="map-cta__text">
+          <p class="eyebrow">Field Map</p>
+          <h3>Trinidad &amp; Tobago</h3>
+          <p>${exploredCount()} of ${db.places.length} places explored</p>
+        </div>
+        <span class="map-cta__chev" aria-hidden="true">${ICONS.forward}</span>
+      </a>
     </section>
 
     <section class="section">

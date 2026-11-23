@@ -45,6 +45,16 @@ export function statsCard(p) {
   </div></div>`;
 }
 
+function habitatCard(p) {
+  const pl = db.placeByPokemon.get(p.id);
+  if (!pl) return "";
+  return `<a class="card habitat" href="#/map/${p.id}">
+    <span class="habitat__icon" aria-hidden="true">${ICONS.pin}</span>
+    <span class="habitat__text"><small>Found at</small><b>${esc(pl.name)}</b><span>${esc(pl.island)} · View on map</span></span>
+    <span class="habitat__chev" aria-hidden="true">${ICONS.forward}</span>
+  </a>`;
+}
+
 function unlockedBody(p) {
   const abilities = p.abilities.map((a) => `<div class="ability">
       <div class="ability__name">${esc(a.name)}${a.hidden ? `<span class="ability__hidden">Hidden</span>` : ""}</div>
@@ -67,6 +77,7 @@ function unlockedBody(p) {
         <div><small>Weight</small><b>${p.weight.toFixed(1)} kg</b></div>
       </div>
     </div>
+    ${habitatCard(p)}
     <div class="card"><h3 class="card__title">Abilities</h3>${abilities}</div>
     ${statsCard(p)}
     ${evolutionCard(p)}`;

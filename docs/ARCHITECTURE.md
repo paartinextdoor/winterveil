@@ -135,6 +135,13 @@ Rule types: `count` (`min`), `all` (`ids`), `any` (`ids`), `viewed` (`min`), `fa
 
 ### `research-notes.json`: `{ "id", "pokemonId", "text" }[]`
 
+### `places.json`: `Place[]` (Field Map, one per Pokémon)
+```jsonc
+{ "pokemonId": "W001", "name": "Chaguanas", "island": "Trinidad",
+  "lat": 10.516, "lon": -61.409,    // real coordinates; js/tt-map.js projects them onto the map
+  "memory": "" }                   // optional line shown when the place is explored (public!)
+```
+
 ## 4. LocalStorage schema
 
 Key: `winterveil.save.v1`

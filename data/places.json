@@ -1,0 +1,17 @@
+[
+  { "pokemonId": "W001", "name": "Chaguanas",                        "island": "Trinidad", "lat": 10.516, "lon": -61.409, "memory": "" },
+  { "pokemonId": "W002", "name": "Gran Couva",                       "island": "Trinidad", "lat": 10.397, "lon": -61.378, "memory": "" },
+  { "pokemonId": "W003", "name": "The Red Building, St. Augustine",  "island": "Trinidad", "lat": 10.641, "lon": -61.400, "memory": "" },
+  { "pokemonId": "W004", "name": "Toco",                             "island": "Trinidad", "lat": 10.826, "lon": -60.946, "memory": "" },
+  { "pokemonId": "W005", "name": "Roxborough",                       "island": "Tobago",   "lat": 11.266, "lon": -60.590, "memory": "" },
+  { "pokemonId": "W006", "name": "Icacos",                           "island": "Trinidad", "lat": 10.072, "lon": -61.895, "memory": "" },
+  { "pokemonId": "W007", "name": "MovieTowne, Port of Spain",        "island": "Trinidad", "lat": 10.661, "lon": -61.538, "memory": "" },
+  { "pokemonId": "W008", "name": "IMAX, Port of Spain",              "island": "Trinidad", "lat": 10.667, "lon": -61.524, "memory": "" },
+  { "pokemonId": "W009", "name": "MovieTowne, Chaguanas",            "island": "Trinidad", "lat": 10.524, "lon": -61.428, "memory": "" },
+  { "pokemonId": "W010", "name": "North Coast",                      "island": "Trinidad", "lat": 10.768, "lon": -61.375, "memory": "" },
+  { "pokemonId": "W011", "name": "Aeropost, Barataria",              "island": "Trinidad", "lat": 10.650, "lon": -61.469, "memory": "" },
+  { "pokemonId": "W012", "name": "Bath & Body Works, East Gates Mall, Trincity", "island": "Trinidad", "lat": 10.633, "lon": -61.348, "memory": "" },
+  { "pokemonId": "W013", "name": "Barrackpore",                      "island": "Trinidad", "lat": 10.233, "lon": -61.392, "memory": "" },
+  { "pokemonId": "W014", "name": "Mount St. Benedict",               "island": "Trinidad", "lat": 10.665, "lon": -61.396, "memory": "" },
+  { "pokemonId": "W015", "name": "Guayaguayare",                     "island": "Trinidad", "lat": 10.158, "lon": -61.040, "memory": "" }
+]

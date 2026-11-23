@@ -12,6 +12,7 @@ import { renderGift } from "./screens/gift.js";
 import { renderAchievements } from "./screens/achievements.js";
 import { renderNationalDetail } from "./screens/national.js";
 import { renderEnding } from "./screens/ending.js";
+import { renderMap } from "./screens/map.js";
 
 route(/^\/home$/, "home", renderHome);
 route(/^\/dex$/, "dex", renderDex);
@@ -19,6 +20,7 @@ route(/^\/dex\/(?<tab>national)$/, "dex", renderDex);
 route(/^\/dex\/national\/(?<nid>\d+)$/, "dex", renderNationalDetail);
 route(/^\/dex\/(?<id>W\d{3})$/, "dex", renderDetail);
 route(/^\/ending$/, "", renderEnding);
+route(/^\/map(?:\/(?<id>W\d{3}))?$/, "home", renderMap);
 route(/^\/gift$/, "gift", renderGift);
 route(/^\/achievements$/, "achievements", renderAchievements);
 

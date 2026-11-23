@@ -10,6 +10,8 @@ export const db = {
   codeById: new Map(),
   achievements: [],
   notes: [],
+  places: [],           // Trinidad & Tobago map pins
+  placeByPokemon: new Map(),
 };
 
 async function getJSON(path) {
@@ -19,12 +21,13 @@ async function getJSON(path) {
 }
 
 export async function loadData() {
-  const [pokemon, types, codes, achievements, notes] = await Promise.all([
+  const [pokemon, types, codes, achievements, notes, places] = await Promise.all([
     getJSON("data/pokemon.json"),
     getJSON("data/types.json"),
     getJSON("data/codes.json"),
     getJSON("data/achievements.json"),
     getJSON("data/research-notes.json"),
+    getJSON("data/places.json"),
   ]);
 
   db.pokemon = pokemon.sort((a, b) => a.number - b.number);
@@ -34,6 +37,8 @@ export async function loadData() {
   db.codeById = new Map(codes.map((c) => [c.id, c]));
   db.achievements = achievements;
   db.notes = notes;
+  db.places = places;
+  db.placeByPokemon = new Map(places.map((pl) => [pl.pokemonId, pl]));
   return db;
 }
 
