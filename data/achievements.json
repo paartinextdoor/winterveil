@@ -1,0 +1,11 @@
+[
+  { "id": "first-discovery",      "name": "First Discovery",       "icon": "✨", "description": "Discover your first Winterveil Pokémon.",          "rule": { "type": "count", "min": 1 } },
+  { "id": "winter-researcher",    "name": "Winter Researcher",     "icon": "❄️", "description": "Discover 5 Winterveil Pokémon.",                   "rule": { "type": "count", "min": 5 } },
+  { "id": "just-resting",         "name": "Just Resting My Eyes",  "icon": "😴", "description": "Complete the Snoozlet evolution line.",           "rule": { "type": "all", "ids": ["W001", "W002", "W003"] } },
+  { "id": "playlist-master",      "name": "Playlist Master",       "icon": "🎧", "description": "Complete the Humbleat evolution line.",           "rule": { "type": "all", "ids": ["W004", "W005", "W006"] } },
+  { "id": "movie-buff",           "name": "Movie Buff",            "icon": "🎬", "description": "Complete the Flixkit evolution line.",            "rule": { "type": "all", "ids": ["W007", "W008", "W009"] } },
+  { "id": "national-fan",         "name": "Trainer's Favorites",   "icon": "💙", "description": "Favorite 6 Pokémon in the National Dex.",         "rule": { "type": "favorites", "min": 6 } },
+  { "id": "legendary-encounter",  "name": "Legendary Encounter",   "icon": "🌟", "description": "Encounter a Legendary Pokémon.",                  "rule": { "type": "any", "ids": ["W014", "W015"] } },
+  { "id": "master-researcher",    "name": "Master Researcher",     "icon": "📖", "description": "Read all 15 Winterveil Pokédex entries.",          "rule": { "type": "viewed", "min": 15 } },
+  { "id": "christmas-champion",   "name": "Christmas Champion",    "icon": "🏆", "description": "Complete the Winterveil Pokédex.",                "rule": { "type": "count", "min": 15 } }
+]

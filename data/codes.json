@@ -1,0 +1,15 @@
+[
+  { "id": "c01", "title": "Three New Partners",       "unlocks": ["W001", "W004", "W007"], "hash": "00d15d78d48d752e4b40164574b46defb6747012ebcd106360f0582f34570e5d" },
+  { "id": "c02", "title": "Just Resting",             "unlocks": ["W002"], "hash": "0ff205a4c38a059f9af2bb0156291b38469ed55ec6e436c8172022388fa77a48" },
+  { "id": "c03", "title": "After Midnight",           "unlocks": ["W003"], "hash": "efef3a79ebd5fde4df9e0ea31245e41d704478d168c0f654a20b602e007df6c1" },
+  { "id": "c04", "title": "Curated Vibes",            "unlocks": ["W005"], "hash": "c25b1043a472f66095a1967fdaca8ad592f82257c7fb9e043c1a982480e34467" },
+  { "id": "c05", "title": "Playlist King",            "unlocks": ["W006"], "hash": "862029cb91db82d11697d19ddce67d8544059c04b76ff12c7867bcbec8b103be" },
+  { "id": "c06", "title": "Autoplay",                 "unlocks": ["W008"], "hash": "178c226703b8b36d4098cdd5c3c4add5ae02a2cb522df0b3659a4dc499e73e7a" },
+  { "id": "c07", "title": "One More Movie",           "unlocks": ["W009"], "hash": "ae9809bfea7dcdf17bd10ed91a089a14993542cd2880e45c94d59f7890046d4a" },
+  { "id": "c08", "title": "Frost on the Pines",       "unlocks": ["W010"], "hash": "f459b5af0855909e6505b978752e3679acf01c6aa5ea9cfe53cd22870f58c271" },
+  { "id": "c09", "title": "A Surprise Gift",          "unlocks": ["W011"], "hash": "87dbc716a7225a52cbd842182672e6b1fdf40a2612490b357a1e67fdabf94af7" },
+  { "id": "c10", "title": "A Glowing Night",          "unlocks": ["W012"], "hash": "04e6670f2be50debfc5797f79db1ba8de4a9c9806260aaa050c6fcd8a2e439e8" },
+  { "id": "c11", "title": "The Reindeer Run",         "unlocks": ["W013"], "hash": "9ae112c7df67d8aea7f06c7b7aa552dd9c62f23845979f036de9146133655c45" },
+  { "id": "c12", "title": "Guardian of Winterveil",   "unlocks": ["W014"], "hash": "24b92ceb54583148f73fb177cb4f80b867f7a1c5af8fcdda6d57d604392c0c41" },
+  { "id": "c13", "title": "A Song Beneath the Snow",  "unlocks": ["W015"], "hash": "015d13fe80f339dcf323482d732924d0fb414e838a60830d9ddf25e0688cbd37", "availableFrom": "2026-12-25" }
+]

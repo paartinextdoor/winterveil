@@ -1,0 +1,89 @@
+/* ==========================================================
+   Winterveil design tokens
+   Change colours / radii / motion here: everything else reads them.
+   ========================================================== */
+:root {
+  /* Deep Navy (primary) */
+  --navy-950: #070F24;
+  --navy-900: #0B1630;
+  --navy-800: #12224A;
+  --navy-700: #1B2F5E;
+  --navy-600: #2A4378;
+
+  /* Ice Blue (secondary) */
+  --ice-50:  #F4FAFE;
+  --ice-100: #E8F3FB;
+  --ice-200: #D4EAF8;
+  --ice-300: #B6DAF1;
+  --ice-400: #8EC5E8;
+  --ice-500: #5FA8D6;
+
+  /* Soft Gold (accent) */
+  --gold-200: #F7EACB;
+  --gold-300: #F1DCA5;
+  --gold-400: #E8C77A;
+  --gold-500: #D4AE5B;
+  --gold-700: #8E6A22;
+
+  /* Forest Green (support) */
+  --forest-400: #3F8A70;
+  --forest-500: #2F6B57;
+  --forest-100: #E1F0EA;
+
+  /* Winter White (background) */
+  --snow: #F6F9FC;
+  --white: #FFFFFF;
+
+  /* Text */
+  --ink:   #13203F;
+  --ink-2: #4A5878;
+  --ink-3: #8592AD;
+  --ink-inverse: #F4F8FF;
+
+  /* Feedback */
+  --rose-500: #B9566A;
+  --rose-100: #F8E6EA;
+
+  /* Surfaces */
+  --glass:        rgba(255, 255, 255, 0.62);
+  --glass-strong: rgba(255, 255, 255, 0.82);
+  --glass-border: rgba(255, 255, 255, 0.9);
+  --glass-dark:   rgba(18, 34, 74, 0.55);
+  --hairline:     rgba(19, 32, 63, 0.08);
+
+  /* Typography */
+  --font: "Nunito", ui-rounded, "SF Pro Rounded", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.875rem;
+  --fs-md: 1rem;
+  --fs-lg: 1.125rem;
+  --fs-xl: 1.375rem;
+  --fs-2xl: 1.75rem;
+  --fs-3xl: 2.125rem;
+
+  /* Shape */
+  --r-sm: 10px;
+  --r-md: 16px;
+  --r-lg: 22px;
+  --r-xl: 28px;
+  --r-pill: 999px;
+
+  /* Depth */
+  --shadow-sm: 0 1px 2px rgba(11, 22, 48, 0.06), 0 2px 8px rgba(11, 22, 48, 0.05);
+  --shadow-md: 0 2px 6px rgba(11, 22, 48, 0.06), 0 10px 28px rgba(11, 22, 48, 0.09);
+  --shadow-lg: 0 10px 40px rgba(11, 22, 48, 0.18);
+  --shadow-gold: 0 6px 22px rgba(212, 174, 91, 0.45);
+
+  /* Spacing */
+  --gutter: 18px;
+  --tabbar-h: 68px;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --t-fast: 160ms;
+  --t-med: 320ms;
+  --t-slow: 600ms;
+}

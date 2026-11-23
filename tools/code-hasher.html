@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gift Code Hasher</title>
+<style>
+  body { font-family: system-ui, sans-serif; max-width: 640px; margin: 40px auto; padding: 0 16px; color: #13203F; background: #F6F9FC; }
+  input { width: 100%; font-size: 18px; padding: 12px; border-radius: 10px; border: 2px solid #B6DAF1; text-transform: uppercase; }
+  pre { background: #0B1630; color: #F1DCA5; padding: 14px; border-radius: 10px; white-space: pre-wrap; word-break: break-all; }
+</style>
+</head>
+<body>
+  <h1>Gift Code Hasher</h1>
+  <p>Type a new gift code to get the line to paste into <code>data/codes.json</code>.
+     Then change <code>id</code>, <code>title</code> and <code>unlocks</code>.</p>
+  <input id="code" placeholder="e.g. SNOWDAY" autocomplete="off">
+  <pre id="out">…</pre>
+  <script type="module">
+    import { canonical, hashCode } from "../js/codes.js";
+    const input = document.getElementById("code"), out = document.getElementById("out");
+    input.addEventListener("input", async () => {
+      const c = canonical(input.value);
+      if (!c) { out.textContent = "…"; return; }
+      const hash = await hashCode(c);
+      out.textContent = `Canonical code: ${c}\n\n{ "id": "c14", "title": "My New Gift", "unlocks": ["W001"], "hash": "${hash}" }`;
+    });
+  </script>
+</body>
+</html>

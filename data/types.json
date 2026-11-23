@@ -1,0 +1,21 @@
+{
+  "normal":   { "label": "Normal",   "color": "#A3A49A" },
+  "fire":     { "label": "Fire",     "color": "#E6824A" },
+  "water":    { "label": "Water",    "color": "#5B9BE0" },
+  "grass":    { "label": "Grass",    "color": "#4E9A6A" },
+  "electric": { "label": "Electric", "color": "#E3B93A" },
+  "ice":      { "label": "Ice",      "color": "#6CC3D9" },
+  "fighting": { "label": "Fighting", "color": "#C2584A" },
+  "poison":   { "label": "Poison",   "color": "#A35BB4" },
+  "ground":   { "label": "Ground",   "color": "#C9A45C" },
+  "flying":   { "label": "Flying",   "color": "#8FA8E8" },
+  "psychic":  { "label": "Psychic",  "color": "#E9708F" },
+  "bug":      { "label": "Bug",      "color": "#9BB43A" },
+  "rock":     { "label": "Rock",     "color": "#B3A36B" },
+  "ghost":    { "label": "Ghost",    "color": "#6E5E9E" },
+  "dragon":   { "label": "Dragon",   "color": "#5B67C9" },
+  "dark":     { "label": "Dark",     "color": "#4E4A5E" },
+  "steel":    { "label": "Steel",    "color": "#8FA3B3" },
+  "fairy":    { "label": "Fairy",    "color": "#E39AC8" },
+  "sound":    { "label": "Sound",    "color": "#7C83E0" }
+}

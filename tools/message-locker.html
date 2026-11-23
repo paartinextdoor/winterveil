@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ending Message Locker</title>
+<style>
+  body { font-family: system-ui, sans-serif; max-width: 640px; margin: 40px auto; padding: 0 16px; color: #13203F; background: #F6F9FC; }
+  label { display: block; font-weight: 700; margin: 16px 0 6px; }
+  input, textarea { width: 100%; box-sizing: border-box; font: inherit; font-size: 16px; padding: 12px; border-radius: 10px; border: 2px solid #B6DAF1; }
+  textarea { min-height: 160px; }
+  button { margin-top: 16px; font: inherit; font-weight: 700; padding: 12px 22px; border: 0; border-radius: 999px; background: #E8C77A; cursor: pointer; }
+  pre { background: #0B1630; color: #F1DCA5; padding: 14px; border-radius: 10px; white-space: pre-wrap; word-break: break-all; }
+  small { color: #4A5878; }
+</style>
+</head>
+<body>
+  <h1>Ending Message Locker</h1>
+  <p>Write the Christmas message, then paste the result into <code>js/config.js</code> → <code>ending.locked</code>.
+     It can only be read by typing the gift code below, so it's safe in the public repo.
+     <b>Don't save your plain message anywhere in the project.</b></p>
+
+  <label for="code">Gift code that unlocks the ending</label>
+  <input id="code" placeholder="The Christmas (Harmona) code from your private list" autocomplete="off">
+  <small>Must be the code that unlocks Harmona (W015).</small>
+
+  <label for="title">Title</label>
+  <input id="title" autocomplete="off">
+
+  <label for="message">Message</label>
+  <textarea id="message"></textarea>
+  <small>Leave an empty line between paragraphs.</small>
+
+  <label for="signature">Sign-off</label>
+  <input id="signature" autocomplete="off">
+
+  <button id="go">Lock message</button>
+  <pre id="out">…</pre>
+
+  <script type="module">
+    import { lock, unlock } from "../js/secret.js";
+    const $ = (id) => document.getElementById(id);
+    $("go").addEventListener("click", async () => {
+      const ending = {
+        title: $("title").value.trim(),
+        message: $("message").value.split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean),
+        signature: $("signature").value.trim(),
+      };
+      const locked = await lock(ending, $("code").value);
+      const check = await unlock(locked, $("code").value);
+      $("out").textContent = check
+        ? `Paste this into js/config.js (replace the old locked text):\n\nlocked: "${locked}",`
+        : "Something went wrong. Please try again.";
+    });
+  </script>
+</body>
+</html>
